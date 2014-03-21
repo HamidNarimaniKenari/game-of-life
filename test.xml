@@ -1,0 +1,17 @@
+
+    <target name="public-release" depends="release">
+        <echo>Updating revision value for next build</echo>
+        <exec dir="${basedir}" executable="python" failonerror="true">
+            <arg line="tools/scripts/revision_increment.py" />
+        </exec>
+        <exec dir="${basedir}" executable="git" failonerror="true">
+            <arg line="add ${manifest.ini} ${source.properties} ${repository.xml}" />
+        </exec>
+        <exec dir="${basedir}" executable="git" failonerror="true">
+            <arg line="commit -m 'succesfully built SDK, incrementing revision number'" />
+        </exec>
+        <exec dir="${basedir}" executable="git" failonerror="true">
+            <arg line="push" />
+        </exec>
+    </target>
+

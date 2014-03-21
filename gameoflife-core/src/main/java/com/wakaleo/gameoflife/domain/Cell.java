@@ -4,7 +4,7 @@ public enum Cell {
     LIVE_CELL("*"), DEAD_CELL(".");
 
     private String symbol;
-
+    private String name;
     private Cell(String symbol) {
         this.symbol = symbol;
     }
@@ -16,6 +16,7 @@ public enum Cell {
 
     static Cell fromSymbol(String symbol) {
         Cell cellRepresentedBySymbol = null;
+	
         for (Cell cell : Cell.values()) {
             if (cell.symbol.equals(symbol)) {
                 cellRepresentedBySymbol = cell;
